@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{fname}  #{lname} Post Job</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/ucommon.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Job 
+                            <small>Add</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+                    <section class="content">
+
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-12">
+                                <!-- general form elements -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <!--<h3 class="box-title">Quick Example</h3>-->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <h:form>
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <h:outputLabel for="txttitle" value="Job Title" />
+                                                <h:inputText styleClass="form-control" id="txttitle" 
+                                                             value="#{UserpostMB.title}"  
+                                                             required="true" 
+                                                             requiredMessage="Title  Can't be Empty " 
+                                                             a:placeholder="Enter Title">
+                                                </h:inputText>
+                                                <h:message for="txttitle" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtprice" value="Job Price" />
+                                                <h:inputText styleClass="form-control" id="txtprice" 
+                                                             value="#{UserpostMB.price}"  
+                                                             required="true" 
+                                                             validatorMessage="Only Digit"
+                                                             requiredMessage="Skill Name Can't be Empty "
+                                                             a:placeholder="Enter Price ">
+                                                    <f:validateRegex pattern="[0-9]*" />
+                                                </h:inputText>
+                                                <h:message for="txtprice" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlduration" value="Job Duration" />
+                                                <h:inputText styleClass="form-control" id="ddlduration" 
+                                                             value="#{UserpostMB.duration}"  
+                                                             required="true" 
+                                                             requiredMessage="Provide Duration Can't be Empty "
+                                                             a:placeholder="Enter Price ">
+                                                </h:inputText>
+                                                <h:message for="ddlduration" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txthmworker" value="How Many Worker" />
+                                                <h:inputText styleClass="form-control" id="txthmworker" 
+                                                             value="#{UserpostMB.hmworker}" 
+                                                             required="true" 
+                                                             validatorMessage="Enter Only Digit"
+                                                             requiredMessage="Provide How Many Freelancer"
+                                                             a:placeholder="Enter How Many FreeLancer Need ">
+                                                    <f:validateRegex pattern="[0-9]*" />
+
+                                                </h:inputText>
+                                                <h:message for="txthmworker" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlskill" value="Select Skill" />
+                                                <h:selectOneMenu value="#{UserpostMB.skillid}" id="ddlskill" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select Required Skill" >
+                                                    <f:selectItem itemLabel="-- Select Skill --"></f:selectItem>
+                                                    <f:selectItems value="#{UserpostMB.getallskill}" var="row"
+                                                                   itemValue="#{row.skillid}" itemLabel="#{row.skill}"></f:selectItems>
+                                                </h:selectOneMenu>      
+                                                <h:message for="ddlskill" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlcateg" value="Select Categores" />
+                                                <h:selectOneMenu value="#{UserpostMB.categid}" id="ddlcateg" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select Categores" >
+                                                    <f:selectItem itemLabel=" --Select Categores-- "></f:selectItem>
+                                                    <f:selectItems value="#{UserpostMB.getallcateg}" var="row"
+                                                                   itemValue="#{row.categid}" itemLabel="#{row.categname}"></f:selectItems>
+                                                </h:selectOneMenu>                                              
+                                                <h:message for="ddlcateg" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                <h:inputTextarea styleClass="form-control"
+                                                                 id="txtdescr"
+                                                                 value="#{UserpostMB.jobdescr}"
+                                                                 required="true"
+                                                                 requiredMessage="Descriptin Can't be Empty"
+                                                                 rows="10"
+                                                                 a:placeholder="Enter Description About User">
+
+                                                </h:inputTextarea>
+
+                                                <h:message for="txtdescr" style="color:red;"/>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <h:commandButton styleClass="btn btn-primary" value="Add Job" action="#{UserpostMB.createPost()}"/>
+                                        </div>
+                                    </h:form>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div> 
+                    </section>                    
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin Deshbord | Add User</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            User 
+                            <small>Add</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+                    <section class="content">
+
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-12">
+                                <!-- general form elements -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <!--<h3 class="box-title">Quick Example</h3>-->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <h:form enctype="multipart/form-data"  prependId="false" >
+
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtfname" value="First Name" />
+                                                <h:inputText styleClass="form-control" id="txtfname" 
+                                                             value="#{userManageBean.fname}" required="true" 
+                                                             requiredMessage="First Name Can't be Empty "
+                                                             validatorMessage="Only Alfabetical character"
+                                                             a:placeholder="Enter First Name">
+                                                    <f:validateRegex pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" />
+
+                                                </h:inputText>
+                                                <h:message for="txtfname" style="color:red;"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtlname" value="Last Name"/>
+                                                <h:inputText styleClass="form-control" id="txtlname" 
+                                                             value="#{userManageBean.lname}"
+                                                             rendered="true"
+                                                             requiredMessage="Second Name Can't be Emplty"
+                                                             validatorMessage="Only Alfabetical character" 
+                                                             a:placeholder="Enter Last Name" >
+                                                    <f:validateRegex pattern="[a-zA-Z]*" />
+                                                </h:inputText>
+                                                <h:message for="txtlname" style="color:red;"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtemail" value="Email ID"/>
+                                                <h:inputText styleClass="form-control" id="txtemail" 
+                                                             value="#{userManageBean.email}" 
+                                                             rendered="true"
+                                                             requiredMessage="Email Can't be Emplty"
+                                                             validatorMessage="Only Alfabetical character"
+                                                             a:placeholder="Enter Email ID ">
+                                                    <f:validator validatorId="emv"/>
+                                                </h:inputText>
+                                                <h:message for="txtemail" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtmobno" value="Mobile No" />
+                                                <h:inputText styleClass="form-control" id="txtmobno" 
+                                                             value="#{userManageBean.mobno}"
+                                                             
+                                                             rendered="true"
+                                                             requiredMessage="Mobile Can't be Emplty"
+                                                             validatorMessage="Only Digit character" 
+                                                             a:placeholder="Enter Mobile No "
+                                                             maxlength="10">
+                                                   
+                                                    <f:validateRegex pattern="[0-9]*" />
+                                                </h:inputText>
+                                                <h:message for="txtmobno" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtusername" value="Username"/>
+                                                <h:inputText styleClass="form-control" id="txtusername" 
+                                                             value="#{userManageBean.username}"
+                                                             rendered="true"
+                                                             requiredMessage="Second Name Can't be Emplty"
+                                                             a:placeholder="Enter Username">
+                                                    <!--validatorMessage="Only Alfabetical character"-->
+                                                    <!--<f:validateRegex pattern="[a-zA-Z]*" />-->
+                                                </h:inputText>
+                                                <h:message for="txtusername" style="color:red;"/>
+                                                <h:outputLabel for="msg" value="#{message}" style="color: red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtpassword" value="Password"/>
+                                                <h:inputSecret styleClass="form-control" id="txtpassword" 
+                                                               value="#{userManageBean.password}"
+                                                               rendered="true"
+                                                               requiredMessage="Password Can't be Emplty" 
+                                                               a:placeholder="Enter Password"
+                                                               >
+                                                    <f:validator validatorId="passwordValidator" />
+                                                    <f:attribute name="confirm" value="#{confirm}" />
+                                                </h:inputSecret>
+                                                <h:message for="txtpassword" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtcpassword" value="Confirm - Password" id="lblcpassword"/>
+                                                <h:inputSecret styleClass="form-control" id="txtcpassword" 
+                                                               rendered="true"
+                                                               binding="#{confirm}" 
+                                                               requiredMessage="Confirm Password Can't be Emplty" 
+                                                               a:placeholder="Enter Confirm Password " 
+                                                               >
+                                                </h:inputSecret>
+                                                <h:message for="txtcpassword" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlskill" value="Skill"/>
+                                                <h:selectOneMenu value="#{userManageBean.skillid }" 
+                                                                 styleClass="form-control select2"
+                                                                 required="true"
+                                                                 requiredMessage="Please Select Skill">
+                                                    <f:selectItem itemLabel="-- Select Skill --" />
+                                                    <f:selectItems value="#{postManagedBean.skillList}"  
+                                                                   itemLabel="#{row.skill}" 
+                                                                   itemValue="#{row.skillid}" var="row" />
+                                                </h:selectOneMenu>
+                                                <h:message for="ddlskill" style="color:red;"/>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlgroup" value="User Group"/>
+                                                <h:selectOneMenu value="#{userManageBean.groupid}" 
+                                                                 styleClass="form-control select2"
+                                                                 required="true"
+                                                                 requiredMessage="Please Select User Group">
+
+                                                    <f:selectItem itemLabel="-- Select User Group --" />
+
+                                                    <f:selectItems value="#{userManageBean.groupList}" 
+                                                                   var="row"
+                                                                   itemLabel="#{row.groupName}" 
+                                                                   itemValue="#{row.groupId}"/>
+                                                </h:selectOneMenu>
+                                                <h:message for="ddlgroup" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                <h:inputTextarea styleClass="form-control"
+                                                                 id="txtdescr"
+                                                                 value="#{userManageBean.decr}"
+                                                                 required="true"
+                                                                 requiredMessage="Descriptin Can't be Empty"
+                                                                 rows="10"
+                                                                 a:placeholder="Enter Description About User">
+
+                                                </h:inputTextarea>
+
+                                                <h:message for="txtdescr" style="color:red;"/>
+                                            </div>
+
+<!--                                            <div class="form-group">
+                                                <h:outputLabel for="file" value="File"/>
+                                                <h:inputFile
+                                                    id="file"
+                                                    value="{userManageBean.uploadedFile}"
+                                                    required="true"
+                                                    requiredMessage="Select File" >
+
+                                                </h:inputFile>
+
+                                                <h:message for="file" style="color:red;"/>
+                                            </div>-->
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <h:commandButton actionListener="#{userManageBean.createUserAdmin}" styleClass="btn btn-primary" value="Add User"/>
+                                             &nbsp;
+                                             <h:commandButton action="#{userManageBean.reset}" value="Reset" styleClass="btn btn-danger" />
+                                        </div>
+                                    </h:form>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div> 
+                    </section>                    
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

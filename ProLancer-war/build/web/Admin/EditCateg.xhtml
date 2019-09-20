@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Categores 
+                            <small>Updating</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+                    <section class="content">
+
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-6">
+                                <!-- general form elements -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <!--<h3 class="box-title">Quick Example</h3>-->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <h:form>
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtcateg" value="Categores Name" />
+                                                <h:inputText  value="#{editCategDetail.categname}" required="true" 
+                                                              requiredMessage="Categore Name Can't be Empty" 
+                                                              validatorMessage="Categore Name can only contain alphabets" 
+                                                              styleClass="form-control" id="txtcateg"
+                                                              a:placeholder="Enter Categore">
+                                                    <f:validateRegex pattern="[a-zA-Z]*" />
+                                                    <h:message for="txtcateg" style="color:red;"/>
+                                                </h:inputText>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <h:commandButton action="#{categManageBean.updateCateg(editCategDetail)}" styleClass="btn btn-primary" value="Update Categores" ></h:commandButton>
+                                             &nbsp;
+                                            <h:commandButton action="CategList.jsf" value="Cancel" styleClass="btn btn-danger" />
+                                        </div>
+                                    </h:form>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div> 
+                    </section>                    
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

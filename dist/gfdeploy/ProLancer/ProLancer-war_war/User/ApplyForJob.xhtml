@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>#{fname} #{lname} Profile</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/ucommon.xhtml">
+            <ui:define name="content">
+                <div class="content-wrapper">
+                    <div class="container">
+                        <!-- Content Header (Page header) -->
+                        <section class="content-header">
+                            <h1>
+                                Welcome 
+                                <small>FreeLancer #{fname} #{lname}</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                <!--                                <li><a href="#">Layout</a></li>
+                                                                <li class="active">Top Navigation</li>-->
+                            </ol>
+                        </section>
+
+                        <!-- Main content -->
+                        <section class="content">
+                            <h:form enctype="multipart/form-data">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                <h:inputTextarea styleClass="form-control"
+                                                                 id="txtdescr"
+                                                                 value="#{Applyjob.coverlatter}"
+                                                                 required="true"
+                                                                 requiredMessage="Cover Latter Can't be Empty"
+                                                                 rows="10"
+                                                                 a:placeholder="Write Cover Latter About For Apply Job">
+                                                </h:inputTextarea>
+                                                <h:message for="txtdescr" style="color:red;"/>
+                                            </div>
+                                </div>
+<!--                                <h:outputLabel value="Cover Latter" for="coverlatter"></h:outputLabel>
+                                <h:inputText value="{Applyjob.coverlatter}" id="coverlatter"></h:inputText>
+                                -->
+                                <h:commandButton styleClass="btn btn-facebook" value="Apply Now" action="#{Applyjob.createApplyProject()}" > </h:commandButton>
+                            
+                            </h:form>
+                        </section>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.container -->
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

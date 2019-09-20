@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" ></meta>
+        <title>Admin | Dashboard</title>
+        <link rel="icon" href="../resources/dist/img/avatar.png" /> 
+
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"></meta>
+        <!-- Bootstrap 3.3.7 -->
+        <h:outputStylesheet  name="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <!--<h:outputStylesheet  name="font-awesome/css/font-awesome.min.css"/>-->
+        <h:outputStylesheet library="css" name="font-awesome.css"/>
+        <!-- Ionicons -->
+        <h:outputStylesheet  name="bower_components/Ionicons/css/ionicons.min.css"/>
+        <!-- jvectormap -->
+        <h:outputStylesheet  name="bower_components/jvectormap/jquery-jvectormap.css"/>
+        <!-- Theme style -->
+        <h:outputStylesheet  name="dist/css/AdminLTE.min.css"/>
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <h:outputStylesheet  name="dist/css/skins/_all-skins.min.css"/>
+
+        <!--<h:outputStylesheet name="webjars/font-awesome/4.7.0/css/font-awesome-jsf.css" />-->
+
+        <!-- Google Font -->
+        <!--  <h:outputStyleSheet rel="stylesheet"
+                href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+    </h:head>
+    <h:body styleClass="hold-transition skin-blue sidebar-mini" >
+        <h:form>
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>P</b>LR</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Pro </b>Lancer</span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>                
+                    <!-- Navbar Right Menu -->               
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <h:graphicImage value="../resources/dist/img/user2-160x160.jpg" styleClass="user-image" alt="User Image" />
+                                    <span class="hidden-xs">#{fname} #{lname}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <h:graphicImage value="../resources/dist/img/user2-160x160.jpg" styleClass="user-image" alt="User Image" />
+                                        <p>
+                                            #{fname} #{lname} - #{skill}
+                                            <small>Member since #{cdate}</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-center">
+                                                <!--<a href="#">Followers</a>-->
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <!--<a href="#">Sales</a>-->
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <!--<a href="#">Friends</a>-->
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+<!--                                            <h:commandButton id="btnprofile" styleClass="btn btn-instagram" 
+                                                             value="Profile" action="/Admin/Profile.jsf"/>-->
+                                        </div>                                    
+
+                                        <div class="pull-right">
+
+                                            <h:commandButton id="btnsignout" styleClass="btn btn-google" 
+                                                             value="Sign out" action="#{loginBean.Logout()}"/>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </nav>
+            </header>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <h:graphicImage value="../resources/dist/img/user2-160x160.jpg" styleClass="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>#{fname} #{lname}</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <!--<h:form styleClass="sidebar-form">-->
+                    <div class="sidebar-form input-group">
+                        <!--                    <h:inputText  styleClass="form-control" ></h:inputText>
+                                            <span class="input-group-btn">
+                                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>-->
+                    </div>
+                    <!--</h:form>-->
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="active treeview menu-open">
+                            <a href="#">
+                                <!--                            <i class="fa fa-dashboard"></i> --><span>Dashboard</span>
+                                <!--                            <span class="pull-right-container">
+                                                                <i class="fa fa-angle-left pull-right"></i>
+                                                            </span>-->
+                            </a>
+                            <!--                        <ul class="treeview-menu">
+                                                        <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                                                        <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                                                    </ul>-->
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                <span>Users</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <!--<li><a href="AddUser.jsf"><i class="fa fa-user-plus"></i>Add User</a></li>-->
+                                <li><a href="UserList.jsf"><i class="fa fa-list-ol"></i>User List</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Posts</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <!--<li><a href="AddPost.jsf"><i class="fa fa-circle-o"></i>Add Job</a></li>-->
+                                <li><a href="PostList.jsf"><i class="fa fa-circle-o"></i>Post List</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Categores</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="AddCateg.jsf"><i class="fa fa-circle-o"></i>Add Categores</a></li>
+                                <li><a href="CategList.jsf"><i class="fa fa-circle-o"></i>Categores List</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Skill</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="AddSkill.jsf"><i class="fa fa-circle-o"></i>Add Skill</a></li>
+                                <li><a href="SkillList.jsf"><i class="fa fa-circle-o"></i>Skill List</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Apply Project</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <!--<li><a href="AddApplyProject.jsf"><i class="fa fa-circle-o"></i>Add Apply Project</a></li>-->
+                                <li><a href="ApplyProjectList.jsf"><i class="fa fa-circle-o"></i>Apply Project List</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+        </h:form>
+
+    </h:body>
+
+</html>
+

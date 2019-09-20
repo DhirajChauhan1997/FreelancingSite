@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>User Registration</title>
+        <h:outputStylesheet name="plugins/iCheck/square/blue.css"/>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" ></meta>
+        <title>Admin | Dashboard</title>
+        <link rel="icon" href="resources/dist/img/avatar.png" /> 
+        <h:outputStylesheet  name="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <h:outputStylesheet  name="css/font-awesome.css"/>
+        <h:outputStylesheet name="css/ionicons.min.css"/>
+        <!-- Ionicons -->
+<!--        <h:outputStylesheet  name="bower_components/Ionicons/css/ionicons.min.css"/>-->
+
+        <!-- jvectormap -->
+        <h:outputStylesheet  name="bower_components/jvectormap/jquery-jvectormap.css"/>
+        <!-- Theme style -->
+        <h:outputStylesheet  name="dist/css/AdminLTE.min.css"/>
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <h:outputStylesheet  name="dist/css/skins/_all-skins.min.css"/>
+        <!--Google Font--> 
+        <!--<h:outputStylesheet  name="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />-->
+
+    </h:head>
+    <h:body styleClass="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="Login.jsf"><b>Pro </b>Lancer</a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <h:form enctype="multipart/form-data">
+
+                    <div class="form-group has-feedback">
+                        <h:outputLabel for="txtfname" value="First Name"/>
+                        <h:inputText id="txtfname" styleClass="form-control" 
+                                     value="#{userManageBean.fname}"
+                                     a:placeholder="Enter First Name"
+                                     required="true"
+                                     requiredMessage="Please Enter First Name">
+
+                        </h:inputText>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <h:message for="txtfname" style="color: red"/>
+                    </div>
+
+
+                    <div class="form-group has-feedback">
+                        <h:outputLabel for="txtlname" value="Last Name"/>
+                        <h:inputText id="txtlname" styleClass="form-control" 
+                                     value="#{userManageBean.lname}"
+                                     a:placeholder="Enter Last Name"
+                                     required="true"
+                                     requiredMessage="Please Enter Last Name">
+
+                        </h:inputText>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <h:message for="txtlname" style="color: red"/>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <h:outputLabel for="txtemail" value="Email ID"/>
+                        <h:inputText id="txtemail" styleClass="form-control" 
+                                     value="#{userManageBean.email}"
+                                     a:placeholder="Enter Email"
+                                     required="true"
+                                     requiredMessage="Please Enter Email">
+
+                        </h:inputText>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <h:message for="txtemail" style="color: red"/>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <h:outputLabel for="txtmobno" value="Mobile No"/>
+                        <h:inputText id="txtmobno" styleClass="form-control" 
+                                     value="#{userManageBean.mobno}"
+                                     a:placeholder="Enter Mobile No"
+                                     required="true"
+                                     requiredMessage="Please Enter Mobile No">
+                        </h:inputText>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <h:message for="txtmobno" style="color: red"/>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <h:outputLabel for="txtusername" value="Username"/>
+                        <h:inputText id="txtusername" styleClass="form-control" 
+                                     value="#{userManageBean.username}"
+                                     a:placeholder="Enter Username"
+                                     required="true"
+                                     maxlength="10"
+                                     requiredMessage="Please Enter Username">
+
+                        </h:inputText>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <h:outputText value="#{userManageBean.message}" style="color: red"/>
+                        <h:message for="txtusername" style="color: red"/>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel for="txtpassword" value="Password"/>
+                        <h:inputSecret styleClass="form-control" id="txtpassword" 
+                                       value="#{userManageBean.password}"
+                                       rendered="true"
+                                       requiredMessage="Password Can't be Emplty" 
+                                       a:placeholder="Enter Password"
+                                       >
+                            <f:validator validatorId="passwordValidator" />
+                            <f:attribute name="confirm" value="#{confirm}" />
+                        </h:inputSecret>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+                        <h:message for="txtpassword" style="color:red;"/>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel for="txtcpassword" value="Confirm - Password" id="lblcpassword"/>
+                        <h:inputSecret styleClass="form-control" id="txtcpassword" 
+                                       rendered="true"
+                                       binding="#{confirm}" 
+                                       requiredMessage="Confirm Password Can't be Emplty" 
+                                       a:placeholder="Enter Confirm Password " 
+                                       >
+                        </h:inputSecret>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+                        <h:message for="txtcpassword" style="color:red;"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="ddlskill" value="Skill"/>
+                        <h:selectOneMenu value="#{userManageBean.skillid }" 
+                                         styleClass="form-control select2"
+                                         required="true"
+                                         requiredMessage="Please Select Skill">
+                            <f:selectItem itemLabel="-- Select Skill --" />
+                            <f:selectItems value="#{postManagedBean.skillList}"  
+                                           itemLabel="#{row.skill}" 
+                                           itemValue="#{row.skillid}" var="row" />
+                        </h:selectOneMenu>
+                        <h:message for="ddlskill" style="color:red;"/>
+
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel for="userimg" value="Choose Photo"/>
+                        <h:inputFile id="userimg" value="#{userManageBean.userImage}"/>
+                        <h:message for="userimg" style="color:red;"/>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <!--                                <label>
+                                                                        <input type="checkbox"> Remember Me
+                                                                    </label>-->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                            <h:commandButton styleClass="btn btn-primary btn-block btn-flat" 
+                                             value="Sign Up" action="#{userManageBean.createUserFile}"/>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </h:form>
+                <!--<a href="#">I forgot my password</a><br></br>-->
+                <a href="Login.jsf" class="text-center">Login</a>
+
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+    </h:body>
+
+    <h:outputScript name="plugins/iCheck/icheck.min.js"/>
+
+    <h:outputScript name="bower_components/jquery/dist/jquery.min.js"></h:outputScript>
+    <!-- Bootstrap 3.3.7 -->
+    <h:outputScript name="bower_components/bootstrap/dist/js/bootstrap.min.js"></h:outputScript>
+    <!-- FastClick -->
+    <h:outputScript name="bower_components/fastclick/lib/fastclick.js"></h:outputScript>
+    <!-- AdminLTE App -->
+    <h:outputScript name="dist/js/adminlte.min.js"></h:outputScript>
+    <!-- Sparkline -->
+    <h:outputScript name="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></h:outputScript>
+    <!-- jvectormap  -->
+    <h:outputScript name="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></h:outputScript>
+    <h:outputScript name="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></h:outputScript>
+    <!-- SlimScroll -->
+    <h:outputScript name="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></h:outputScript>
+    <!-- ChartJS -->
+    <h:outputScript name="bower_components/chart.js/Chart.js"></h:outputScript>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <h:outputScript name="dist/js/pages/dashboard2.js"></h:outputScript>
+    <!-- AdminLTE for demo purposes -->
+    <h:outputScript name="dist/js/demo.js"></h:outputScript>
+
+    <!--    <h:outputScript>
+            $(function () {
+            $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+            });
+            });
+        </h:outputScript>-->
+</html>
+

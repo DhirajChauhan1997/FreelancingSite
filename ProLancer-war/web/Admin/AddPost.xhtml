@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Admin | Post Job</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Job 
+                            <small>Add</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+                    <section class="content">
+
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-12">
+                                <!-- general form elements -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <!--<h3 class="box-title">Quick Example</h3>-->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <h:form>
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <h:outputLabel for="txttitle" value="Job Title" />
+                                                <h:inputText styleClass="form-control" id="txttitle" 
+                                                             value="#{postManagedBean.title}"  
+                                                             required="true" 
+                                                             requiredMessage="Title  Can't be Empty " 
+                                                             a:placeholder="Enter Title">
+                                                </h:inputText>
+                                                <h:message for="txttitle" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtprice" value="Job Price" />
+                                                <h:inputText styleClass="form-control" id="txtprice" 
+                                                             value="#{postManagedBean.price}"  
+                                                             required="true" 
+                                                             validatorMessage="Only Digit"
+                                                             requiredMessage="Skill Name Can't be Empty "
+                                                             a:placeholder="Enter Price ">
+                                                    <f:validateRegex pattern="[0-9]*" />
+                                                </h:inputText>
+                                                <h:message for="txtprice" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlduration" value="Job Duration" />
+                                                <h:inputText styleClass="form-control" id="ddlduration" 
+                                                             value="#{postManagedBean.duration}"  
+                                                             required="true" 
+                                                             requiredMessage="Provide Duration Can't be Empty "
+                                                             a:placeholder="Enter Price ">
+                                                </h:inputText>
+                                                
+<!--                                                <h:selectOneMenu value="{postManagedBean.duration}" id="ddlduration" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select Job Duration" >
+
+                                                    <f:selectItem itemLabel=" Select Job Duration " />
+
+                                                    <f:selectItem itemLabel="1 Month" value="1 Month"/>
+                                                    <f:selectItem itemLabel="2 Month" value="2 Month"/>
+                                                    <f:selectItem itemLabel="3 Month" value="3 Month"/>
+                                                    <f:selectItem itemLabel="4 Month" value="4 Month"/>
+                                                    <f:selectItem itemLabel="5 Month" value="5 Month"/>
+                                                    <f:selectItem itemLabel="6 Month" value="6 Month"/>
+                                                    <f:selectItem itemLabel="7 Month" value="7 Month"/>
+                                                    <f:selectItem itemLabel="8 Month" value="8 Month"/>
+                                                    <f:selectItem itemLabel="9 Month" value="9 Month"/>
+                                                    <f:selectItem itemLabel="10 Month" value="10 Month"/>
+                                                    <f:selectItem itemLabel="11 Month" value="11 Month"/>
+                                                    <f:selectItem itemLabel="12 Month" value="12 Month"/>
+                                                    <f:selectItem itemLabel="Above 1 Yeare" value="1 Year"/>
+
+                                                </h:selectOneMenu>-->
+                                                <h:message for="ddlduration" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txthmworker" value="How Many Worker" />
+                                                <h:inputText styleClass="form-control" id="txthmworker" 
+                                                             value="#{postManagedBean.hmworker}" 
+                                                             required="true" 
+                                                             validatorMessage="Enter Only Digit"
+                                                             requiredMessage="Provide How Many Freelancer"
+                                                             a:placeholder="Enter How Many FreeLancer Need ">
+                                                    <f:validateRegex pattern="[0-9]*" />
+
+                                                </h:inputText>
+                                                <h:message for="txthmworker" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddluser" value="Select User" />
+                                                <h:selectOneMenu value="#{postManagedBean.posterid}" id="ddluser" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select User" >
+                                                    <f:selectItem itemLabel="-- Select User --"></f:selectItem>
+                                                    <f:selectItems value="#{postManagedBean.userList}" var="row"
+                                                                   itemValue="#{row.userid}" itemLabel="#{row.username}"></f:selectItems>
+                                                </h:selectOneMenu>   
+                                                <h:message for="ddluser" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlskill" value="Select Skill" />
+                                                <h:selectOneMenu value="#{postManagedBean.skillid}" id="ddlskill" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select Required Skill" >
+                                                    <f:selectItem itemLabel="-- Select Skill --"></f:selectItem>
+                                                    <f:selectItems value="#{postManagedBean.skillList}" var="row"
+                                                                   itemValue="#{row.skillid}" itemLabel="#{row.skill}"></f:selectItems>
+                                                </h:selectOneMenu>      
+                                                <h:message for="ddlskill" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddlcateg" value="Select Categores" />
+                                                <h:selectOneMenu value="#{postManagedBean.categid}" id="ddlcateg" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select Categores" >
+                                                    <f:selectItem itemLabel=" --Select Categores-- "></f:selectItem>
+                                                    <f:selectItems value="#{postManagedBean.categList}" var="row"
+                                                                   itemValue="#{row.categid}" itemLabel="#{row.categname}"></f:selectItems>
+                                                </h:selectOneMenu>                                              
+                                                <h:message for="ddlcateg" style="color:red;"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                <h:inputTextarea styleClass="form-control"
+                                                                 id="txtdescr"
+                                                                 value="#{postManagedBean.jobdescr}"
+                                                                 required="true"
+                                                                 requiredMessage="Descriptin Can't be Empty"
+                                                                 rows="10"
+                                                                 a:placeholder="Enter Description About User">
+
+                                                </h:inputTextarea>
+
+                                                <h:message for="txtdescr" style="color:red;"/>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <h:commandButton styleClass="btn btn-primary" value="Add Job" action="#{postManagedBean.createPost}"/>
+                                            &nbsp;
+                                            <h:commandButton action="#{postManagedBean.reSet()}" value="Reset" styleClass="btn btn-danger" />
+                                        </div>
+                                    </h:form>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div> 
+                    </section>                    
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

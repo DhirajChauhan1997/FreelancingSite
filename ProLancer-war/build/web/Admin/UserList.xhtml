@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Admin | User List</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            User 
+                            <small>List</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-xs-12">
+
+                                <div class="box">
+
+                                    <h:form>
+                                        <div class="box box-default">
+                                            <div class="box-header">
+                                                <h3 class="box-title">Manage User's</h3>
+                                            </div>
+                                           
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    <div class="col-xs-2">
+                                                        <h:selectOneMenu styleClass="form-control form-control select2 select2-hidden-accessible"
+                                                                         value="#{userManageBean.searchBy}">
+                                                            <f:selectItem itemLabel="First Name" itemValue="fname"/>
+                                                            <f:selectItem itemLabel="Last Name" itemValue="lname"/>
+                                                            <f:selectItem itemLabel="Email" itemValue="email"/>
+                                                            <f:selectItem itemLabel="Username" itemValue="username"/>
+                                                            <f:selectItem itemLabel="Mobile No" itemValue="mobno"/>
+                                                            <f:selectItem itemLabel="Created On" itemValue="createdDate"/>
+
+                                                        </h:selectOneMenu>
+                                                    </div>
+
+                                                    <div class="col-xs-3">
+                                                        <h:inputText styleClass="form-control pull-right" id="txtsearch" 
+                                                                     a:placeholder="Search"
+                                                                     value="#{userManageBean.keyword}"
+                                                                     required="true"
+                                                                     requiredMessage="*"/>
+                                                        <h:message for="txtsearch" style="color: red;"/>
+                                                    </div>
+
+                                                    <div class="col-xs-1">
+                                                        <h:commandButton id="btnsearch" styleClass="btn btn-primary" 
+                                                                         value="Search" actionListener="#{userManageBean.searchSwitch}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                    <h:form>
+                                        <div class="box-body">
+
+                                            <h:dataTable value="#{userManageBean.userList}" var="row" 
+                                                         styleClass="table table-bordered table-hover">
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        User Id
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.userid}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        First Name
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.fname}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Last Name
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.lname}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        User Name
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.username}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Email
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.email}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Mobile No
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.mobno}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Skill
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.skillid.skill}"/>
+                                                </h:column>
+
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Photo
+                                                    </f:facet>
+                                                    <h:graphicImage id="imguser"
+                                                                    styleClass=""
+                                                                    alt="userimg"
+                                                                    height="150"
+                                                                    width="150"
+                                                                    value="../userimg/#{row.photo}" >
+                                                    </h:graphicImage>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Created On
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.createdon}"/>
+                                                </h:column>
+
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Edit
+                                                    </f:facet>
+
+                                                    <h:commandButton actionListener="#{userManageBean.editUser(row.userid)}"
+                                                                     value="Update" 
+
+                                                                     styleClass="btn-sm btn-primary">
+                                                        <!--<i class="fa fa-edit"></i>-->
+                                                    </h:commandButton>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Delete
+                                                    </f:facet>
+                                                    <h:commandButton action="#{userManageBean.removeUser(row.userid)}"
+                                                                     onclick=" if (!confirm('Really delete this ?')) {
+                                                                                 return false;
+                                                                             }
+                                                                             ;
+                                                                             return true;"
+                                                                     value="Delete"
+                                                                     styleClass="btn-sm btn-danger" >
+                                                        <!--<i class="fa fa-remove"></i>-->
+                                                    </h:commandButton>
+                                                </h:column>
+
+                                            </h:dataTable>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>
+

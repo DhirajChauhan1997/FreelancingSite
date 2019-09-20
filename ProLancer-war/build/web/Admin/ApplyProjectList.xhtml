@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin | Apply Project </title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Job's 
+                            <small>List</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Manage Apply Job's</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <h:form>
+                                            <h:dataTable value="#{applyProjectManagedBean.applyProjectList}" 
+                                                         var="row" styleClass="table table-bordered table-hover" >
+
+<!--                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Apply Project  Id
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.applyProjectId}"/>
+                                                </h:column>-->
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Job Status
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.status}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Job Cover Latter
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.coverLatter}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        User First Name
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.userid.fname}"/>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Post Title
+                                                    </f:facet>
+                                                    <h:outputText value="#{row.postid.title}"/>
+                                                </h:column>
+
+<!--                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Edit
+                                                    </f:facet>
+                                                    <h:commandButton actionListener="{applyProjectManagedBean.editApplyProject(row.applyProjectId)}"
+                                                                     value="Update" styleClass="btn btn-facebook" />
+                                                </h:column>-->
+
+<!--                                                <h:column>
+                                                    <f:facet name="header">
+                                                        Delete
+                                                    </f:facet>
+                                                    <h:commandButton action="{applyProjectManagedBean.removeApplyProject(row.applyProjectId)}"
+                                                                     value="Delete" 
+                                                                     onclick="if (! confirm('Really delete this?') ) { return false;}; return true; "
+                                                                     styleClass="btn btn-danger" />
+                                                </h:column>-->
+                                            </h:dataTable>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

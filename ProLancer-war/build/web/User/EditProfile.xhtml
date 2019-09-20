@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{fname} #{lname} Profile</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/ucommon.xhtml">
+            <ui:define name="content">
+                <div class="content-wrapper">
+                    <div class="container">
+
+                        <section class="content-header">
+                            <h1>
+                                #{fname} #{lname} Profile
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                <li><a href="#">Examples</a></li>
+                                <li class="active"> #{fname} #{lname} Profile</li>
+                            </ol>
+                        </section>
+
+                        <!-- Main content -->
+                        <section class="content">
+
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                    <!-- Profile Image -->
+                                    <div class="box box-primary">
+                                        <div class="box-body box-profile">
+                                            <h:graphicImage styleClass="profile-user-img img-responsive img-circle" value="../userimg/#{photo}" alt="User profile picture"/>
+
+                                            <h3 class="profile-username text-center">#{fname} #{lname}</h3>
+
+                                            <p class="text-muted text-center">#{skill}</p>
+
+                                            <ul class="list-group list-group-unbordered">
+                                                <!--                <li class="list-group-item">
+                                                                  <b>Followers</b> <a class="pull-right">1,322</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                  <b>Following</b> <a class="pull-right">543</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                  <b>Friends</b> <a class="pull-right">13,287</a>
+                                                                </li>-->
+                                            </ul>
+
+                                            <!--<h:commandButton styleClass="btn btn-primary btn-block" value="Edit Profile" ></h:commandButton>-->
+
+                                            <!--                                            <h:commandButton styleClass="btn btn-primary btn-block" value="Change Profile Photo" >
+                                                                                            <h:inputFile id="file" value="tete" />
+                                                                                        </h:commandButton>-->
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+
+                                    <!-- About Me Box -->
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">About Me</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+
+                                            <!--<hr></hr>-->
+
+                                            <!--<strong><i class="fa fa-file-text-o margin-r-5"></i></strong>-->
+
+                                            <p>#{descr}</p>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-9">
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs">
+                                            <!--                                            <li class="active"><a href="#activity" data-toggle="tab">Applyed Job's</a></li>
+                                                                                        <li><a href="#timeline" data-toggle="tab">My Posted Job</a></li>-->
+                                            <li><a href="#" data-toggle="tab">Update Profile</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="active tab-pane" id="activity">
+                                                <!-- Post -->
+                                                <div class="post">
+                                                    <h:form enctype="multipart/form-data">
+
+                                                        <div class="box-body">
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtfname" value="First Name" />
+                                                                <h:inputText styleClass="form-control" id="txtfname" 
+                                                                             value="#{editUserDetail.fname}" required="true" 
+                                                                             requiredMessage="First Name Can't be Empty "
+                                                                             validatorMessage="Only Alfabetical character"
+                                                                             a:placeholder="Enter First Name">
+                                                                    <f:validateRegex pattern="[a-zA-Z]*" />
+
+                                                                </h:inputText>
+                                                                <h:message for="txtfname" style="color:red;"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtlname" value="Last Name"/>
+                                                                <h:inputText styleClass="form-control" id="txtlname" 
+                                                                             value="#{editUserDetail.lname}"
+                                                                             rendered="true"
+                                                                             requiredMessage="Second Name Can't be Emplty"
+                                                                             validatorMessage="Only Alfabetical character" 
+                                                                             a:placeholder="Enter Last Name">
+                                                                    <f:validateRegex pattern="[a-zA-Z]*" />
+                                                                </h:inputText>
+                                                                <h:message for="txtlname" style="color:red;"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtemail" value="Email ID"/>
+                                                                <h:inputText styleClass="form-control" id="txtemail" 
+                                                                             value="#{editUserDetail.email}" 
+                                                                             rendered="true"
+                                                                             requiredMessage="Email Can't be Emplty"
+                                                                             validatorMessage="Only Alfabetical character"
+                                                                             a:placeholder="Enter Email ID ">
+                                                                </h:inputText>
+                                                                <h:message for="txtemail" style="color:red;"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtmobno" value="Mobile No" />
+                                                                <h:inputText styleClass="form-control" id="txtmobno" 
+                                                                             value="#{editUserDetail.mobno}"
+                                                                             rendered="true"
+                                                                             requiredMessage="Mobile Can't be Emplty"
+                                                                             validatorMessage="Only Alfabetical character" 
+                                                                             a:placeholder="Enter Mobile No ">
+                                                                    <f:validateRegex pattern="[0-9]*" />
+                                                                </h:inputText>
+                                                                <h:message for="txtmobno" style="color:red;"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtusername" value="Username"/>
+                                                                <h:inputText styleClass="form-control" id="txtusername" 
+                                                                             value="#{editUserDetail.username}"
+                                                                             rendered="true"
+                                                                             requiredMessage="Second Name Can't be Emplty"
+                                                                             validatorMessage="Only Alfabetical character"
+                                                                             a:placeholder="Enter Username">
+                                                                    <f:validateRegex pattern="[a-zA-Z]*" />
+                                                                </h:inputText>
+                                                                <h:message for="txtusername" style="color:red;"/>
+
+                                                            </div>
+
+<!--                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtpassword" value="Password"/>
+                                                                <h:inputSecret styleClass="form-control" id="txtpassword" 
+                                                                               value="#{editUserDetail.password}"
+                                                                               rendered="true"
+                                                                               requiredMessage="Password Can't be Emplty" 
+                                                                               a:placeholder="Enter Password">
+                                                                </h:inputSecret>
+                                                                <h:message for="txtpassword" style="color:red;"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtcpassword" value="Confirm - Password"/>
+                                                                <h:inputSecret styleClass="form-control" id="txtcpassword" 
+
+                                                                               rendered="true"
+                                                                               requiredMessage="Confirm Password Can't be Emplty" 
+                                                                               a:placeholder="Enter Confirm Password ">
+                                                                </h:inputSecret>
+                                                                <h:message for="txtcpassword" style="color:red;"/>
+                                                            </div>-->
+
+                                                            <div class="form-group">
+
+                                                                <h:outputLabel for="ddlskill" value="Skill"/>
+
+                                                                <h:selectOneMenu value="#{editUserDetail.skillid }" 
+                                                                                 styleClass="form-control select2"
+                                                                                 required="true"
+                                                                                 requiredMessage="Please Select Skill">
+                                                                    <f:selectItem itemLabel="-- Select Skill --" />
+                                                                    <f:selectItems value="#{skillManagedBean.skillList}"  
+                                                                                   itemLabel="#{row.skill}" 
+                                                                                   itemValue="#{row.skillid}" var="row" />
+                                                                </h:selectOneMenu>
+                                                                <h:message for="ddlskill" style="color:red;"/>
+
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <h:inputHidden  id="txtcreatedon" 
+                                                                                value="#{editUserDetail.createdon}"
+                                                                                requiredMessage="Confirm Password Can't be Emplty" 
+                                                                                a:placeholder="Enter Confirm Password ">
+                                                                </h:inputHidden>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                                <h:inputTextarea styleClass="form-control"
+                                                                                 id="txtdescr"
+                                                                                 value="#{editUserDetail.decr}"
+                                                                                 required="true"
+                                                                                 requiredMessage="Descriptin Can't be Empty"
+                                                                                 rows="10"
+                                                                                 a:placeholder="Enter Description About User">
+
+                                                                </h:inputTextarea>
+                                                                <h:message for="txtdescr" style="color:red;"/>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- /.box-body -->
+                                                        <div class="box-footer">
+                                                            <h:commandButton actionListener="#{userMB.updateUser(editUserDetail)}" styleClass="btn btn-primary" value="Update User"/>
+                                                            &nbsp;
+                                                            <h:commandButton action="Profile.jsf" value="Cancel" styleClass="btn btn-danger" />
+                                                        </div>
+                                                    </h:form>
+                                                </div>
+                                                <!-- /.post -->
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /.tab-content -->
+                                    </div>
+                                    <!-- /.nav-tabs-custom -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                        </section>
+                        <!-- /.content -->
+                    </div>
+
+                </div>
+                <!-- /.container -->
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

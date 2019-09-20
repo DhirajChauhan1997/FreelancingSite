@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{fname} #{lname} Profile</title>
+        <style type="text/css">
+            /*-- Global Selectors --*/
+            a{
+                color:#47649F;
+            }
+
+            body{
+                font-family:'helvetica';    
+            }
+
+            /*-- Bootstrap Override Style --*/
+
+
+            /*-- Content Style --*/
+            .post-footer-option li{
+                float:left;
+                margin-right:50px;
+                padding-bottom:15px;
+            }
+
+            .post-footer-option li a{
+                color:#AFB4BD;
+                font-weight:500;
+                font-size:1.3rem;
+            }
+
+            .photo-profile{
+                border:1px solid #DDD;    
+            }
+
+            .anchor-username h4{
+                font-weight:bold;    
+            }
+
+            .anchor-time{
+                color:#ADB2BB;
+                font-size:1.2rem;
+            }
+
+            .post-footer-comment-wrapper{
+                background-color:#F6F7F8;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:composition template="../templates/ucommon.xhtml">
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data">
+                    <div class="content-wrapper">
+                        <div class="container">
+                            <!-- Content Header (Page header) -->
+                            <section class="content-header">
+                                <h1>
+                                    Welcome 
+                                    <small>FreeLancer #{fname} #{lname}</small>
+                                </h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                </ol>
+                            </section>
+                            <!-- Main content -->
+                            <section class="content">
+                                <div class="row">
+                                    <!-- left column -->
+                                    <div class="col-md-12">
+                                        <!-- general form elements -->
+                                        <div class="box box-primary">
+                                            <div class="box-header with-border">
+                                                <ui:repeat value="#{UserpostMB.postList}" var="post">
+                                                    <div class="w3-container" align="justify">
+                                                        <h2 align="justify">#{post.posterid.fname}</h2>
+
+                                                        <div class="w3-card-4" style="width:80%" >
+                                                            <header class="w3-container w3-light-grey">
+                                                                <h3 align="justify">#{post.title}</h3>
+                                                            </header>
+                                                            <div class="w3-container">
+                                                                <p align="justify">#{post.duration}</p>
+                                                                <hr></hr>
+                                                                <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"/>
+                                                                <p align="justify">#{post.jobdescr}</p><br></br>
+                                                            </div>
+<!--                                                            <button class="w3-button w3-block w3-dark-grey">VIEW</button>
+                                                            <hl></hl>-->
+                                                            <button class="w3-button w3-block w3-dark-grey">APPLY</button>
+                                                        </div>
+                                                    </div>
+                                                </ui:repeat>                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
+                            <!-- /.content -->
+                        </div>
+                        <!-- /.container -->
+                    </div>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

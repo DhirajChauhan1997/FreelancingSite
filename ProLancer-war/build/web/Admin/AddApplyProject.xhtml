@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Admin | Apply Project </title>
+    </h:head>
+    
+    <h:body>
+        <ui:composition template="../templates/common.xhtml">
+            <!--overwrite the section-->
+            <ui:define name="content">
+
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Apply  
+                            <small>Job</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </section>
+                    <section class="content">
+
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-12">
+                                <!-- general form elements -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <!--<h3 class="box-title">Quick Example</h3>-->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+                                    <h:form>
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddluser" value="Select User" />
+                                                <h:selectOneMenu value="#{applyProjectManagedBean.userid}" id="ddluser" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select User" >
+                                                    <f:selectItem itemLabel="-- Select User --"></f:selectItem>
+                                                    <f:selectItems value="#{postManagedBean.userList}" var="row"
+                                                                   itemValue="#{row.userid}" itemLabel="#{row.username}"></f:selectItems>
+                                                </h:selectOneMenu>   
+                                                <h:message for="ddluser" style="color:red;"/>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <h:outputLabel for="ddluser1" value="Select Post" />
+                                                <h:selectOneMenu value="#{applyProjectManagedBean.postid}" id="ddluser1" 
+                                                                 required="true" styleClass="form-control select2"
+                                                                 requiredMessage="Please Select User" >
+                                                    <f:selectItem itemLabel="-- Select User --"></f:selectItem>
+                                                    <f:selectItems value="#{postManagedBean.postList}" var="row"
+                                                                   itemValue="#{row.postid}" itemLabel="#{row.title}"></f:selectItems>
+                                                </h:selectOneMenu>   
+                                                <h:message for="ddluser" style="color:red;"/>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtdescr" value="Description"/>
+                                                <h:inputTextarea styleClass="form-control"
+                                                                 id="txtdescr"
+                                                                 value="#{applyProjectManagedBean.coverlatter}"
+                                                                 required="true"
+                                                                 requiredMessage="Cover Latter Can't be Empty"
+                                                                 rows="10"
+                                                                 a:placeholder="Write Cover Latter About For Apply Job">
+                                                </h:inputTextarea>
+                                                <h:message for="txtdescr" style="color:red;"/>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <h:outputLabel for="txtstatus" value="Status" />
+                                                <h:inputText styleClass="form-control" id="txtstatus" 
+                                                             value="#{applyProjectManagedBean.status}"
+                                                             rendered="true"
+                                                             requiredMessage="Status Can't be Emplty"
+                                                             validatorMessage="Only Alfabetical character" 
+                                                             a:placeholder="Enter Status ">
+                                                    <f:validateRegex pattern="[a-zA-z]*" />
+                                                </h:inputText>
+                                                <h:message for="txtstatus" style="color:red;"/>
+                                            </div>
+                                            
+                                        </div>
+                                         <div class="box-footer">
+                                             <h:commandButton actionListener="#{applyProjectManagedBean.createApplyProject}" 
+                                                             styleClass="btn btn-primary" 
+                                                             value="Add Apply Project"/>
+                                             
+                                             &nbsp;
+                                             <h:commandButton action="#{applyProjectManagedBean.reset}" value="Reset" styleClass="btn btn-danger" />
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
